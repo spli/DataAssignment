@@ -1,3 +1,4 @@
-data/*
-tidy.csv
+tidy.txt
 .R*
+dataset.zip
+UCI HAR Dataset/*

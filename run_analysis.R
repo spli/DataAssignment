@@ -4,26 +4,24 @@ library(tidyr)
 
 #download data file and unzip
 
-data_dir = file.path("data")
-if (!dir.exists(data_dir)) { dir.create(data_dir)}
-zip_file <- file.path(data_dir, "dataset.zip")
+zip_file <- "dataset.zip"
 if(!file.exists(zip_file)) {
         download.file(
                 "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",
                 zip_file,
                 method = "curl")
 }
-unzip(zip_file, exdir = data_dir)
+unzip(zip_file)
 
 #Load in files
-test_x <- read.table("data/UCI HAR Dataset/test/X_test.txt")
-test_y <- read.table("data/UCI HAR Dataset/test/y_test.txt")
-test_subjects <- read.table("data/UCI HAR Dataset/test/subject_test.txt")
-train_x <- read.table("data/UCI HAR Dataset/train/X_train.txt")
-train_y <- read.table("data/UCI HAR Dataset/train/y_train.txt")
-train_subjects <- read.table("data/UCI HAR Dataset/train/subject_train.txt")
-features <- read.table("data/UCI HAR Dataset/features.txt")
-activities <- read.table("data/UCI HAR Dataset/activity_labels.txt")
+test_x <- read.table("UCI HAR Dataset/test/X_test.txt")
+test_y <- read.table("UCI HAR Dataset/test/y_test.txt")
+test_subjects <- read.table("UCI HAR Dataset/test/subject_test.txt")
+train_x <- read.table("UCI HAR Dataset/train/X_train.txt")
+train_y <- read.table("UCI HAR Dataset/train/y_train.txt")
+train_subjects <- read.table("UCI HAR Dataset/train/subject_train.txt")
+features <- read.table("UCI HAR Dataset/features.txt")
+activities <- read.table("UCI HAR Dataset/activity_labels.txt")
 
 # set up columnames
 feature_names <- features[,2]
@@ -56,4 +54,4 @@ tidy_data <- merged %>%
         group_by(subject, activity, feature) %>%
         summarise(mean = mean(value))
 tidy_data$feature <- factor(tidy_data$feature)
-write.csv(tidy_data, file = "tidy.csv", row.names=FALSE)
+write.table(tidy_data, file = "tidy.txt", row.names=FALSE)

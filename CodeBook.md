@@ -3,13 +3,7 @@ The source data in this script is based on the [UCI Human Activity Recognition U
 
 The source data set was obtained from experiments from 30 subjects, performing six different activities, and based on a number of readings from accelerometer and gyroscope signals. Please see [this document](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) for the description of how the data was collected and what the features represent.
 
-This script generates a second tidy data set. The following steps have been applied to the data:
-
-1. Transmute the activity data to use activity name strings rather than numbers.
-2. Merge activity, subject and measurement data, selecting only the mean and std measurements
-3. Rename columns
-4. Tidies the data so that one row is now only one measurement.
-5. Averages up for each measurement, activity and subject
+This script generates a second tidy data set. Details are in the [README](README.md) 
 
 The data contains the following columns:
 
